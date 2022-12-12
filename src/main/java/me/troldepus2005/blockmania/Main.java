@@ -1,38 +1,53 @@
 package me.troldepus2005.blockmania;
 
-import me.troldepus2005.blockmania.utils.config;
+import me.troldepus2005.blockmania.Events.BlockChangeListener;
+import me.troldepus2005.blockmania.Events.playerInteractListener;
+import org.bukkit.Bukkit;
+import org.bukkit.block.EntityBlockStorage;
+import org.bukkit.event.EventHandler;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin {
 
-    public static Main instance; // Instance
+    public static Main main; // Instance
 
-    public Logger logger = Logger.getLogger(getDescription().getName()); // Set console logger
+    public static Plugin plugin;
+
 
     @Override
     public void onEnable() {
         // Plugin startup logic
 
-        instance = this; // Set instance
+        //define main to instance
+        main = this;
 
-        new config(this, true); // Get config file
+        //config magic
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+        //check if path plugins/expmines/users exist, if not create it
+        File f = new File("plugins"+File.separator+"EXPMines"+File.separator+"users");
+        if (!f.exists()) {
+            f.mkdir();
+            Bukkit.getLogger().info("User package created");
+        }
 
-//        new ConveyorBeltChecker(); // Start runnable
-
-//        getServer().getPluginManager().registerEvents(new Listeners(this), this); // Register listeners
-
-        logger.info("Plugin enabled"); // Inform console that the plugin is enabled
+        getServer().getPluginManager().registerEvents(new playerInteractListener(), this); // Register listeners
+        getServer().getPluginManager().registerEvents(new BlockChangeListener(), this);
 
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-
-        instance = null; // Set instance to null
-
-        logger.info("Plugin disabled"); // Inform console that the plugin is disabled
     }
+
+    //get the main from the class Main, then return to the variable main, i think
+    public static Main getMain(){
+        return main;
+    }
+
 }

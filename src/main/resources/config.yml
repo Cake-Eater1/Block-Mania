@@ -1,2 +1,43 @@
 #Author Troldepus2005
-#Source Code: 
+#Source Code: https://github.com/Cake-Eater1/Block-Mania
+
+
+
+Wands:
+  1:
+    Wand Type:
+      GLASS
+      #Which block to shoot
+    Block Type:
+      GLASS
+      # how much damage the block does on hit
+    Damage:
+      1
+    # velocity of the block
+    Velocity:
+      2
+  2:
+    Wand Type:
+      ANVIL
+    #Which block to shoot
+    Block Type:
+      ANVIL
+    # how much damage the block does on hit
+    Damage:
+      1
+    # velocity of the block
+    Velocity:
+      2
+  3:
+    Wand Type:
+      IRON_BLOCK
+    #Which block to shoot
+    Block Type:
+      IRON_BLOCK
+    # how much damage the block does on hit
+    Damage:
+      1
+    # velocity of the block
+    Velocity:
+      2
+
