@@ -9,48 +9,51 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class EntityPlayerCollisionCheck {
 
-    public static void CollisionChecker(FallingBlock fB, Player p){
+    public static void CollisionChecker(FallingBlock fB){
+
 
        new BukkitRunnable() {
 
-           Player[] players = Bukkit.getServer().getOnlinePlayers().toArray(new Player[0]);
+           ArrayList<Player> players = new ArrayList<Player> (Bukkit.getServer().getOnlinePlayers());
 
            @Override
            public void run() {
 
-               System.out.println("1");
-
-            if (fB.isOnGround() || !fB.isValid()) {
-                System.out.println("2");
+                if (fB.isOnGround() || !fB.isValid()) {
                 cancel();
-            }
+                }
 
-            System.out.println("3");
+                //check if it hits player
 
-            //check if it hits player
-            if (fB.getNearbyEntities(2,2,2).contains(players)) {
+               List<Entity> entities = fB.getNearbyEntities(2,2,2);
 
-                System.out.println("4");
+               if (entities.isEmpty()) {
+                   return;
+               }
 
+               if (players.isEmpty()) {
+                   return;
+               }
 
-            }
+               System.out.println(entities);
+//               System.out.println(players);
 
-            System.out.println("5");
+                if (players.contains(entities.get(1))) {
 
-            @NotNull List<Entity> nearbyEntities = fB.getNearbyEntities(2,2,2);
+                    System.out.println("4");
+                    cancel();
+                }
 
-            System.out.println(fB.getNearbyEntities(2, 2,2));
-            System.out.println(nearbyEntities);
+               }
+           }.runTaskTimer(Main.getMain(), 10L, 1L);
 
-           }
-       }.runTaskTimerAsynchronously(Main.getMain(), 1L, 3L);
-
-    }
+        }
 
 //    taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getMain(), new Runnable() {
 //        @Override

@@ -1,6 +1,7 @@
 package me.troldepus2005.blockmania.Events;
 
 import me.troldepus2005.blockmania.Main;
+import me.troldepus2005.blockmania.utils.EntityPlayerCollisionCheck;
 import me.troldepus2005.blockmania.utils.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -47,6 +48,7 @@ public class playerInteractListener implements Listener {
             FallingBlock fB = p.getWorld().spawnFallingBlock(p.getLocation().add(0, 2, 0), Material.getMaterial((String) wandsBlock.get(x)) , (byte) 0);
             fB.setVelocity(new Vector(p.getLocation().getDirection().getX() , p.getLocation().getDirection().getY(), p.getLocation().getDirection().getZ()).multiply((Double) wandsVelocity.get(x)));
 
+            EntityPlayerCollisionCheck.CollisionChecker(fB);
 
             break;
 
