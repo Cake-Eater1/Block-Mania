@@ -1,6 +1,46 @@
 #Author Troldepus2005
 #Source Code: https://github.com/Cake-Eater1/Block-Mania
 
+Detection:
+  Hitbox:
+    #increasing this could lead to performance drops
+    #these performance drops would most likely be small until the extremes
+    #by increasing this it changes the size of the hitbox which detects if the player is inside
+    #Default: 4
+    x:
+      4
+    y:
+      4
+    z:
+      4
+  Delay:
+    #delay in ticks before the detection should start
+    #increase this when also increasing "Hitbox" else it will detect the player firing
+    #increasing this will lead to marginal better performance
+    #Default: 10
+    10
+  Period:
+    #Period in which the detection happens in ticks
+    #increasing this will make detection less reliable
+    #increase this with size of hitbox to mitigate the performance hit
+    #Cannot be lowered below 1
+    #Default: 1
+    1
+
+Firing:
+  Offset:
+    #Change this to change the offset of blocks spawned
+    #Decreasing Y would lower the block farther into the players head
+    x:
+      0
+    y:
+      2
+    z:
+      0
+
+
+
+
 
 
 Wands:

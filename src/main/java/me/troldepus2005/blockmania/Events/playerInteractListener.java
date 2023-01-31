@@ -1,25 +1,19 @@
 package me.troldepus2005.blockmania.Events;
 
 import me.troldepus2005.blockmania.Main;
+import me.troldepus2005.blockmania.utils.Config;
 import me.troldepus2005.blockmania.utils.EntityPlayerCollisionCheck;
-import me.troldepus2005.blockmania.utils.utils;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class playerInteractListener implements Listener {
 
@@ -37,18 +31,23 @@ public class playerInteractListener implements Listener {
         Player p = e.getPlayer();
         Material i = p.getInventory().getItemInMainHand().getType();
 
-        ArrayList wands = utils.getWandsType();
-        ArrayList wandsBlock = utils.getWandsBlock();
-        ArrayList wandsVelocity = utils.getWandsVelocity();
-        for (int x = 0; true; x++) {
+        ArrayList wands = new Config(Main.instance, false).getWandsType();
+        ArrayList wandsBlock = new Config(Main.instance,false).getWandsBlock();
+        ArrayList wandsVelocity = new Config(Main.instance,false).getWandsVelocity();
+
+        for (int x = 0; wands.size() != x; x++) {
             if (!wands.get(x).equals(i.toString())) {
                 continue;
             }
 
-            FallingBlock fB = p.getWorld().spawnFallingBlock(p.getLocation().add(0, 2, 0), Material.getMaterial((String) wandsBlock.get(x)) , (byte) 0);
+            FallingBlock fB = p.getWorld().spawnFallingBlock(p.getLocation().add(Main.offset.get(0), Main.offset.get(1), Main.offset.get(2)), Material.getMaterial((String) wandsBlock.get(x)) , (byte) 0);
             fB.setVelocity(new Vector(p.getLocation().getDirection().getX() , p.getLocation().getDirection().getY(), p.getLocation().getDirection().getZ()).multiply((Double) wandsVelocity.get(x)));
 
             EntityPlayerCollisionCheck.CollisionChecker(fB);
+
+            ItemStack t = p.getInventory().getItem(e.getHand());
+            t.setAmount(t.getAmount()-1);
+            p.getInventory().setItem(e.getHand(), t);
 
             break;
 
