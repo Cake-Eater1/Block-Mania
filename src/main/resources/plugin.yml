@@ -3,3 +3,6 @@ version: '${project.version}'
 main: me.troldepus2005.blockmania.Main
 api-version: 1.18
 authors: [ Troldepus2005 ]
+commands:
+  Blockmania:
+    description: Blockmania standard command

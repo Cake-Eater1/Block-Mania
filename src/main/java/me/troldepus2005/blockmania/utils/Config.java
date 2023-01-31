@@ -31,7 +31,6 @@ public class Config {
             Main.offset.add(Main.fileConfiguration.getInt("Firing.Offset.x"));
             Main.offset.add(Main.fileConfiguration.getInt("Firing.Offset.y"));
             Main.offset.add(Main.fileConfiguration.getInt("Firing.Offset.z"));
-            System.out.println(Main.offset);
 
             Main.range.add(Main.fileConfiguration.getInt("Detection.Hitbox.x"));
             Main.range.add(Main.fileConfiguration.getInt("Detection.Hitbox.y"));
@@ -65,6 +64,13 @@ public class Config {
         // Try statement to prevent plugin failures
         try {
             new Config(Main.getMain(),true);
+            ArrayList<String> wands = new ArrayList<String>();
+            ArrayList<String> blocks = new ArrayList<String>();
+            ArrayList<Integer> damage = new ArrayList<Integer>();
+            ArrayList<Double> velocity = new ArrayList<Double>();
+            ArrayList<Integer> offset = new ArrayList<Integer>();
+            // Detection Variables
+            ArrayList<Integer> range = new ArrayList<Integer>();
             Bukkit.getLogger().info("config.yml has been reloaded!"); // Send to console
             save(); // Save config
         } catch (Exception exception) {

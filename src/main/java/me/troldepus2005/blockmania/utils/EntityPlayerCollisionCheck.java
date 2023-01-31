@@ -42,7 +42,6 @@ public class EntityPlayerCollisionCheck {
 
                     if (entities.get(i) instanceof Player) {
                         Player p = (Player) entities.get(i);
-                        System.out.println(123);
                         p.damage(new Config(Main.instance, false).getBlockDamage(fB.getBlockData().getMaterial().toString()));
                         fB.remove();
                         cancel();

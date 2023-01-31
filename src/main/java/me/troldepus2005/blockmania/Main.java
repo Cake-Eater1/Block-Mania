@@ -1,5 +1,6 @@
 package me.troldepus2005.blockmania;
 
+import me.troldepus2005.blockmania.Commands.MainCommand;
 import me.troldepus2005.blockmania.Events.BlockChangeListener;
 import me.troldepus2005.blockmania.Events.playerInteractListener;
 import me.troldepus2005.blockmania.utils.Config;
@@ -50,6 +51,8 @@ public final class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new playerInteractListener(), this); // Register listeners
         getServer().getPluginManager().registerEvents(new BlockChangeListener(), this);
+
+        getServer().getPluginCommand("Blockmania").setExecutor(new MainCommand());
 
     }
 
