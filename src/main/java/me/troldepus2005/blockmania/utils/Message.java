@@ -3,7 +3,6 @@ package me.troldepus2005.blockmania.utils;
 import me.troldepus2005.blockmania.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.Permission;
 
 public class Message {
 

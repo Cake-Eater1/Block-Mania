@@ -4,12 +4,10 @@ import me.troldepus2005.blockmania.Main;
 import me.troldepus2005.blockmania.utils.Config;
 import me.troldepus2005.blockmania.utils.Message;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 public class MainCommand implements CommandExecutor {
 
