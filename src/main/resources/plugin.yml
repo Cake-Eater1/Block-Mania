@@ -1,5 +1,6 @@
 name: BlockMania
-version: '${project.version}'
+#Major update, secondary update, patches
+version: '1.1.02'
 main: me.troldepus2005.blockmania.Main
 api-version: 1.18
 authors: [ Troldepus2005 ]

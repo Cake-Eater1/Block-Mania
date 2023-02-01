@@ -26,19 +26,19 @@ public class MainCommand implements CommandExecutor {
                 return true;
             }
 
-            if (args[0].equalsIgnoreCase("restart")) {
+            if (args[0].equalsIgnoreCase("reload")) {
 
-                if (!p.hasPermission("Blockmania.restart") && !p.hasPermission("Blockmania.*")){
-                    new Message().MissingPerm(p, "Blockmania.restart");
+                if (!p.hasPermission("Blockmania.reload") && !p.hasPermission("Blockmania.*")){
+                    new Message().MissingPerm(p, "Blockmania.reload");
                     return true;
                 }
 
                 new Message().Restarting(p);
-                Bukkit.getLogger().warning("Blockmania being restarted by " + p.getName());
-                Bukkit.getLogger().warning("Blockmania being restarted by " + p.getName());
-                Bukkit.getLogger().warning("Blockmania being restarted by " + p.getName());
-                Bukkit.getLogger().warning("Blockmania being restarted by " + p.getName());
-                Bukkit.getLogger().warning("Blockmania being restarted by " + p.getName());
+                Bukkit.getLogger().warning("Blockmania being reload by " + p.getName());
+                Bukkit.getLogger().warning("Blockmania being reload by " + p.getName());
+                Bukkit.getLogger().warning("Blockmania being reload by " + p.getName());
+                Bukkit.getLogger().warning("Blockmania being reload by " + p.getName());
+                Bukkit.getLogger().warning("Blockmania being reload by " + p.getName());
                 new Config(Main.getMain(), false).reload();
                 return true;
             }
