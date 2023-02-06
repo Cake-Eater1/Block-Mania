@@ -1,6 +1,8 @@
 #Author Troldepus2005
 #Source Code: https://github.com/Cake-Eater1/Block-Mania
 
+#Version 1.2.01 - added Worldguard support, now only works with allow-block-mania flag
+
 Detection:
   Hitbox:
     #increasing this could lead to performance drops
@@ -48,6 +50,9 @@ Wands:
     Wand Type:
       GLASS
       #Which block to shoot
+    Wand Name:
+      "§6Glass Wand"
+      #Name of the wand
     Block Type:
       GLASS
       # how much damage the block does on hit
@@ -60,6 +65,9 @@ Wands:
     Wand Type:
       ANVIL
     #Which block to shoot
+    Wand Name:
+      "§6Glass Wand"
+    #Name of the wand
     Block Type:
       ANVIL
     # how much damage the block does on hit
@@ -72,6 +80,9 @@ Wands:
     Wand Type:
       IRON_BLOCK
     #Which block to shoot
+    Wand Name:
+      "§6Glass Wand"
+    #Name of the wand
     Block Type:
       IRON_BLOCK
     # how much damage the block does on hit

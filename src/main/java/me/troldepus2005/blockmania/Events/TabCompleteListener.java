@@ -17,8 +17,12 @@ public class TabCompleteListener implements TabCompleter {
             if(sender instanceof Player){
                 Player p = (Player) sender;
 
-                if(p.hasPermission("blockmania.restart") || p.hasPermission("blockmania.*")) {
+                if(p.hasPermission("blockmania.restart")) {
                     l.add("reload");
+                }
+
+                if (p.hasPermission("blockmania.give")) {
+                    l.add("give");
                 }
                 return l;
 

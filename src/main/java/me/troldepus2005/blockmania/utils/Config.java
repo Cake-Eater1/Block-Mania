@@ -2,9 +2,12 @@ package me.troldepus2005.blockmania.utils;
 
 import me.troldepus2005.blockmania.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +21,16 @@ public class Config {
         Main.file = new File(instance.getDataFolder(), "config.yml");
         Main.fileConfiguration = YamlConfiguration.loadConfiguration(Main.file);
         if (startup) {
+
+            ArrayList<String> wands = new ArrayList<String>();
+            ArrayList<String> blocks = new ArrayList<String>();
+            ArrayList<Integer> damage = new ArrayList<Integer>();
+            ArrayList<Double> velocity = new ArrayList<Double>();
+            ArrayList<Integer> offset = new ArrayList<Integer>();
+            ArrayList<String> name = new ArrayList<String>();
+            // Detection Variables
+            ArrayList<Integer> range = new ArrayList<Integer>();
+
             //check if it is on startup, only ran on reload and onEnable
             loadDefault(instance);
 
@@ -27,6 +40,7 @@ public class Config {
                 Main.blocks.add(Main.fileConfiguration.getString("Wands." + x + "." + "Block Type"));
                 Main.damage.add(Main.fileConfiguration.getInt("Wands." + x + "." + "Damage"));
                 Main.velocity.add(Main.fileConfiguration.getDouble("Wands." + x + "." + "Velocity"));
+                Main.name.add(ChatColor.translateAlternateColorCodes('&',Main.fileConfiguration.getString("Wands." + x + "." + "Wand Name")));
             }
             Main.offset.add(Main.fileConfiguration.getInt("Firing.Offset.x"));
             Main.offset.add(Main.fileConfiguration.getInt("Firing.Offset.y"));
@@ -64,13 +78,6 @@ public class Config {
         // Try statement to prevent plugin failures
         try {
             new Config(Main.getMain(),true);
-            ArrayList<String> wands = new ArrayList<String>();
-            ArrayList<String> blocks = new ArrayList<String>();
-            ArrayList<Integer> damage = new ArrayList<Integer>();
-            ArrayList<Double> velocity = new ArrayList<Double>();
-            ArrayList<Integer> offset = new ArrayList<Integer>();
-            // Detection Variables
-            ArrayList<Integer> range = new ArrayList<Integer>();
             Bukkit.getLogger().info("config.yml has been reloaded!"); // Send to console
             save(); // Save config
         } catch (Exception exception) {
@@ -124,6 +131,10 @@ public class Config {
 
     public ArrayList getWandsVelocity() {
         return Main.velocity;
+    }
+
+    public ArrayList getWandsName() {
+        return Main.name;
     }
 
     //can't initlize this variable before, as it changes on input
